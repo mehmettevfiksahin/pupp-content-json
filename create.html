@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="pupp.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	</head>
+	<body>
+		<div id="pupp">
+			<div class="contentInfo">
+				<h1>Video Info</h1>
+				<div class="form-flex">
+					<label for="">ID</label>
+					<input type="number" name="id" placeholder="ID" onfocusout="setContentInfo(this)">
+				</div>
+				<span class="add" onclick="createObject('video')">+</span>
+				<div class="form-flex small">
+					<label for="">Video Start/Stop Time</label>
+					<input type="number" name="startTime" placeholder="Start Time" onfocusout="setQuestion(this)">
+					<input type="number" name="stopTime" placeholder="Stop Time" onfocusout="setQuestion(this)">
+					<input type="button" name="" value="Get Time">
+					<input type="button" name="" value="Get Time">
+				</div>
+			</div>
+			<div class="questionInfo">
+				<h1>Question Info</h1>
+				<div class="form-flex">
+					<label for="">Question</label>
+					<input type="text" name="question" placeholder="Question" onfocusout="setQuestion(this)">
+				</div>
+				<span class="add" onclick="createObject('qestion')">+</span>
+				<div class="form-flex small">
+					<label for="">Question Start/Stop Time</label>
+					<input type="number" name="startTime" placeholder="Start Time" onfocusout="setQuestion(this)">
+					<input type="number" name="stopTime" placeholder="Stop Time" onfocusout="setQuestion(this)">
+					<input type="button" name="" value="Get Time">
+					<input type="button" name="" value="Get Time">
+				</div>
+			</div>
+			<div class="videoControl">
+				<input type="text" name="url" onkeyup="getPlayerID(event, this)" onload="this.focus()" placeholder="Youtube URL">
+				<div class="videoEmbed"><div id="player"></div></div>
+			</div>
+		</div>
+		<script src="create.js" type="text/javascript"></script>
+	</body>
+</html>

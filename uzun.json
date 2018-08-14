@@ -1,0 +1,78 @@
+{
+    "id": "3",
+    "level": "2",
+    "media": {
+        "id": "-g0UWgG0BJ0",
+        "provider": "",
+        "type": ""
+    },
+    "questions": [
+        {
+            "correctHints": [
+                {
+                    "attributes": {
+                        "speechText": "doğru1",
+                        "viewUri": "doru 1,2"
+                    },
+                    "type": "image"
+                }
+            ],
+            "intentions": [],
+            "speechText": "soru 1",
+            "startTime": "5",
+            "stopTime": "15",
+            "wrongHints": [
+                {
+                    "attributes": {
+                        "speechText": "yanlış 1",
+                        "viewUri": "yanlış 1,2"
+                    },
+                    "type": "image"
+                }
+            ]
+        },
+        {
+            "correctHints": [
+                {
+                    "attributes": {
+                        "speechText": "doru 2",
+                        "viewUri": "doru 2,2"
+                    },
+                    "type": "image"
+                }
+            ],
+            "intentions": [],
+            "speechText": "Soru 2",
+            "startTime": "23",
+            "stopTime": "125",
+            "wrongHints": [
+                {
+                    "attributes": {
+                        "speechText": "yanlıs 2",
+                        "viewUri": "yanlıs 2,2"
+                    },
+                    "type": "image"
+                }
+            ]
+        }
+    ],
+    "scenario": [
+        "Seneryo",
+        "yok",
+        "bu",
+        "gün"
+    ],
+    "skills": [
+        "skill",
+        "hava",
+        "gılıcı"
+    ],
+    "tags": [
+        "tagsta",
+        "metin2",
+        "bitmez",
+        "lonca",
+        "yıkılmaz"
+    ],
+    "title": "Yeni Deneme bu !"
+}
