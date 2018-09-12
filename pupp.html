@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<link rel="stylesheet" href="pupp.css">
+		<link rel="stylesheet" href="styles/pupp.css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 	</head>
 	<body>
 		<div class="backClose"></div>
 		<div class="jsonPrint">
-			<h1>Json Çıktısı <button onclick="parseJson()">bs bana</button></h1>
+			<h1>Json Çıktısı <button class="import" onclick="parseJson()"><i class="fas fa-file-import"></i> import</button></h1>
 			<span onclick="closeJson()"><i>x</i></span>
 			<textarea name="json" rows="8" cols="80"></textarea>
 		</div>
@@ -18,111 +18,122 @@
 			<div class="contentInfo">
 				<h1>Video Info</h1>
 				<div class="form-flex">
-					<label for="">ID</label>
+					<label for="id">ID</label>
 					<input type="number" name="id" placeholder="ID" onfocusout="setContentInfo(this)">
 				</div>
 				<div class="form-flex">
-					<label for="">Title</label>
+					<label for="title">Title</label>
 					<input type="text" name="title" placeholder="Title" onfocusout="setContentInfo(this)">
 				</div>
 				<div class="form-flex">
-					<label for="">Level</label>
+					<label for="emojititle">Emoji Title</label>
+					<input type="text" name="emojititle" placeholder="Emoji Title" onfocusout="setContentInfo(this)">
+				</div>
+				<div class="form-flex">
+					<label for="level">Level</label>
 					<input type="text" name="level" placeholder="Level" onfocusout="setContentInfo(this)">
 				</div>
 				<div class="form-flex">
-					<label for="">Scenario</label>
+					<label for="scenario">Scenario</label>
 					<input type="text" name="scenario" placeholder="Scenario" onfocusout="setContentInfo(this)">
 				</div>
 				<div class="form-flex">
-					<label for="">Skills</label>
+					<label for="skills">Skills</label>
 					<input type="text" name="skills" placeholder="Skills" onfocusout="setContentInfo(this)">
 				</div>
 				<div class="form-flex">
-					<label for="">Tags</label>
+					<label for="tags">Tags</label>
 					<input type="text" name="tags" placeholder="Tags" onfocusout="setContentInfo(this)">
 				</div>
 			</div>
 			<div class="questionInfo">
 				<h1>Question Info</h1>
 				<div class="form-flex">
-					<label for="">Question</label>
+					<label for="question">Question</label>
 					<input type="text" name="question" placeholder="Question" onfocusout="setQuestion(this)">
 				</div>
 				<div class="form-flex">
-					<label for="">Correct Hint Text</label>
-					<input type="text" name="correctHintText" placeholder="Correct Hint Text" onfocusout="setQuestion(this)">
+					<label for="intentName">Intent Name</label>
+					<input type="text" name="intentName" placeholder="intentName" onfocusout="setQuestion(this)">
 				</div>
 				<div class="form-flex">
-					<label for="">Correct View URI</label>
-					<input type="text" name="correctViewUri" placeholder="Correct View URI" onfocusout="setQuestion(this)">
+					<label>Expected Answers</label>
+					<div class="expectedAnswers"></div>
+					<span class="add" onclick="createExpectedAnswers()"><i>+</i></span>
 				</div>
 				<div class="form-flex">
-					<label for="">Wrong Hint Text</label>
-					<input type="text" name="wrongHintText" placeholder="Wrong Hint Text" onfocusout="setQuestion(this)">
-				</div>
-				<div class="form-flex">
-					<label for="">Wrong View URI</label>
-					<input type="text" name="wrongViewUri" placeholder="Wrong View URI" onfocusout="setQuestion(this)">
+					<label for="hint">Hint
+						<select class="" name="hintType" onchange="hintTypeChange(this)">
+							<option value="multi-choice">multi-choice</option>
+						</select>
+					</label>
+					<div class="hints">
+						<label for="speechText"><abbr title="hintSpeechText">Spech Text</abbr><input type="text" name="hintSpeechText"></label>
+						<label for="viewUri"><abbr title="hintViewUri">View Uri</abbr><input type="text" name="hintViewUri"></label>
+						<label for="isCorrect"><abbr title="hintIsCorrect">is Correct</abbr><input type="checkbox" name="hintIsCorrect"></label>
+						<label for="choicesType"><abbr title="choicesType">Type</abbr><input type="text" name="choicesType"></label>
+						<span class="add" onclick="createHint()"><i>+</i></span>
+						<div class="hint"></div>
+					</div>
+					<div class="t"></div>
 				</div>
 				<div class="form-flex small">
-					<input type="number" name="startTime" placeholder="Start Time" onfocusout="setQuestion(this)">
-					<input type="number" name="stopTime" placeholder="Stop Time" onfocusout="setQuestion(this)">
+					<input type="number" name="startTime" placeholder="Start Time" onfocusout="setQuestion(this)" disabled>
+					<input type="number" name="stopTime" placeholder="Stop Time" onfocusout="setQuestion(this)" disabled>
 					<input type="button" name="" value="Get Time" onclick="GetTime('start')">
 					<input type="button" name="" value="Get Time" onclick="GetTime('stop')">
 				</div>
-
 			</div>
 			<div class="videoControl">
-				<input type="text" name="url" onkeyup="getPlayerID(event, this)" onload="this.focus()" placeholder="Youtube URL">
-				<div class="videoEmbed"><div id="player"></div></div>
+				<input type="button" value="&#xf144;" onclick="setVideoTime('start')">
+				<input type="number" name="videoStartTime" disabled>
+
+				<input type="text" name="url" onkeyup="setPlayerID(event, this)" onload="this.focus()" placeholder="Youtube URL">
+
+				<input type="number" name="videoStopTime"  disabled>
+				<input type="button" value="&#xf28d;" onclick="setVideoTime('stop')">
+				<div class="videoEmbed">
+					<div id="player"></div><div class="t"></div>
+					<span class="toggleEdit up" onclick="toggleEdit(this)"><i class="fas fa-angle-double-down"></i><i class="fas fa-angle-double-up"></i></span>
+					<div class="indicator none">
+						<div class="fullScreenTransparent" onclick="indicatorMove(event,this)"></div>
+						<div class="indicatorImg">
+							<img src="images/arrow.png" alt="" width="50px">
+						</div>
+						<div class="indicatorControl">
+							<select name="" id="" onchange="changeIndicator(this)">
+								<option value="arrow">arrow</option>
+								<option value="circle">circle</option>
+								<option value="square">square</option>
+							</select>
+							<div class="flx"><label for="">Angle:</label><input type="number" onkeyup="setAngle(this)"></div>
+							<div class="flx"><label for="">Width:</label><input type="number" onkeyup="setIndicatorWidth(this)" value="50"></div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="question">
 				<span class="add" onclick="createQuestion()"><i>+</i></span>
 			</div>
 		</div>
 		<span onclick="showJson()" style="background: #46a813;position: fixed;right: 5px;bottom: 5px;padding: 10px;border-radius: 5px;font-size: 17px;font-weight: 600;color: #fff;cursor: pointer;">Json Show</span>
-	    <script>
-	      // 2. This code loads the IFrame Player API code asynchronously.
-	      var tag = document.createElement('script');
+		<script>
+			var tag = document.createElement('script');
+			tag.src = "https://www.youtube.com/iframe_api";
+			var firstScriptTag = document.getElementsByTagName('script')[0];
+			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			var player;
+			function onYouTubeIframeAPIReady() {
+				player = new YT.Player('player', {
+					height: '455',
+					width: '800',
+					videoId: '',
+					events: {
 
-	      tag.src = "https://www.youtube.com/iframe_api";
-	      var firstScriptTag = document.getElementsByTagName('script')[0];
-	      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-	      // 3. This function creates an <iframe> (and YouTube player)
-	      //    after the API code downloads.
-	      var player;
-	      function onYouTubeIframeAPIReady() {
-	        player = new YT.Player('player', {
-	          height: '455',
-	          width: '800',
-	          videoId: '',
-	          events: {
-	           // 'onReady': onPlayerReady,
-	//            'onStateChange': onPlayerStateChange
-	          }
-	        });
-	      }
-/*
-	      // 4. The API will call this function when the video player is ready.
-	      function onPlayerReady(event) {
-	        //event.target.playVideo();
-	      }
-
-	      // 5. The API calls this function when the player's state changes.
-	      //    The function indicates that when playing a video (state=1),
-	      //    the player should play for six seconds and then stop.
-	      var done = false;
-	      function onPlayerStateChange(event) {
-	        if (event.data == YT.PlayerState.PLAYING && !done) {
-	          //setTimeout(stopVideo, 5000);
-	          //done = true;
-	        }
-	      }
-	      function stopVideo() {
-	        player.stopVideo();
-		}*/
-	    </script>
-		<script type="text/javascript" src="pupp.js"></script>
+					}
+				});
+			}
+		</script>
+		<script type="text/javascript" src="scripts/pupp.js"></script>
 	</body>
 </html>

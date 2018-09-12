@@ -1,0 +1,78 @@
+* {padding: 0;margin: 0;box-sizing: border-box;}
+body {background:#2e2e2e;}
+input, select {background: rgba(0,0,0,.5);width:100%;border: 1px solid #555;border-width: 1px 1px 1px 1px;border-radius: 5px 5px 0 0;outline: none;padding: 10px;color: #fff;text-align: center;font-size: 20px}
+.videoControl input[type=button] {cursor: pointer;}
+.t {clear: both;}
+.none {display: none;}
+.backClose {background: rgba(0,0,0,.8);position: fixed;width: 100%;height: 100%;top:0;left:0;display: none;z-index: 5;}
+#pupp {width: 800px;margin:30px auto;font-family: 'Roboto', sans-serif;color:#fff;font-size: 14px;}
+.jsonPrint {display: none;background: #222222;width: 600px;height: 400px;padding: 30px 10px 0 10px;border: 3px solid #666;border-radius: 5px;font-family: 'Roboto', sans-serif;color:#fff;font-size: 14px;position: fixed;top: calc(50% - 200px);left: calc(50% - 300px);z-index: 10;}
+.jsonPrint textarea	{background: rgba(0,0,0,.4);width: 100%;height: 360px;border: none;border-radius: 5px;color: white;padding: 15px 20px;white-space: pre;outline: none;resize: none;}
+.jsonPrint h1 {font-size: 16px;margin-top: -25px;padding-bottom: 5px;}
+.jsonPrint h1 .import {background: #141414;color: #888;padding: 3px;font-size: 15px;border: none;margin-left: 10px;cursor: pointer;}
+.jsonPrint span {position: absolute;top: 3px;right: 10px;padding: 3px 8px;border-radius: 3px;cursor: pointer;}
+.jsonPrint span:hover {background: rgba(255,255,255,.1);}
+.jsonPrint span i {font-style: normal;font-weight: 600;}
+.contentInfo, .questionInfo {background: #222;position: absolute;width:240px;top: 30px;left: 30px;padding: 10px 10px;border-radius: 5px;}
+.contentInfo input, .questionInfo input {background: #1e1e1e;margin: 5px 0 15px 0;padding: 5px 10px;font-size: 14px;border-radius: 3px;text-align: left;}
+.contentInfo .small input, .questionInfo .small input {width: 48%;margin: 1px;}
+.contentInfo .small input:nth-child(2n), .questionInfo .small input:nth-child(2n) {float: right;}
+.contentInfo .small input[type=button], .questionInfo .small input[type=button] {background: #22222a;text-align: center;    box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 10px 10px rgba(255,255,255,.1);cursor: pointer}
+.contentInfo h1, .questionInfo h1 {font-size: 18px;margin-bottom: 10px;padding: 5px;border-bottom: 1px solid #999;}
+.contentInfo span.add, .questionInfo span.add {background: #2e2e2e;margin-bottom: 15px;text-align: center;font-size: 25px;border-radius: 5px;display: block;cursor: pointer;}
+.contentInfo span.add:hover, .questionInfo span.add:hover {background: #333;}
+.questionInfo {left: auto;right: 30px;}
+.questionInfo span.add {display: block;width: 100%;float: left;margin: 10px 0;}
+.questionInfo span.add i {font-style: normal;}
+.questionInfo .expectedAnswer {width: 100%;float: left;}
+.questionInfo .expectedAnswer label {float: left;width: 100%;margin-top: 10px;}
+.questionInfo .expectedAnswer label abbr {float: left;margin: 3px;}
+.questionInfo .expectedAnswer label input {float: left;width: 30%;font-size: 11px;margin: 0 0 0 5px;}
+.questionInfo .expectedAnswer span {float: left;border:1px dashed #b59702;padding: 5px;border-radius: 5px;font-size: 10px;margin: 5px;}
+.questionInfo .expectedAnswer span.add {background: #878787;width: 20px;height: 20px;border: 2px solid #b59702;border-radius: 50%;color: white;position: relative;    margin: 0 0 0 5px;}
+.questionInfo .expectedAnswer span.add i {position: absolute;top: -6px;left: 2px;font-size: 22px;font-style: normal;}
+.questionInfo .expectedAnswer span.add:hover {background: #b59702;transform: scale(1.3);}
+.questionInfo .expectedAnswer span.add:hover i {top: -5px;left: 2px;}
+
+.questionInfo .hints label {float: left;width: 110px;margin-top: 5px;}
+.questionInfo label select {float: right;padding: 0;width: 50%;font-size: 13px;border-radius: 0;background: rgba(0,0,0,.1);}
+.questionInfo .hints label abbr {float: left;width:35px;font-size: 10px;}
+.questionInfo .hints label input {float: left;width: 70px;font-size: 10px;margin:0;margin-left: 2px;}
+.questionInfo .hints span:not(.add) {float: left;border:1px dashed #b59702;padding: 5px;border-radius: 5px;font-size: 10px;margin: 5px;}
+.videoControl {}
+.videoControl .videoEmbed {width: 800px;height:455px;position: relative;z-index: 3;float: left;overflow: hidden;}
+.videoControl .videoEmbed .toggleEdit {width: 80px;height: 80px;border: 40px solid;border-color: #2e2e2e transparent transparent #2e2e2e;border-radius: 50%;transform: rotate(45deg);display: block;position: absolute;bottom: -41px;left: calc(50% - 40px);z-index: 12;cursor: pointer;}
+.videoControl .videoEmbed .toggleEdit.up {opacity: .1}
+.videoControl .videoEmbed .toggleEdit.up:hover {opacity: 1}
+.videoControl .videoEmbed .toggleEdit i {transform: rotate(-45deg);font-size: 24px;position: absolute;top: -20px;left: -15px;}
+.videoControl .videoEmbed .toggleEdit.down i:nth-child(1) { display: none;}
+.videoControl .videoEmbed .toggleEdit:not(.down) { border-color: transparent #2e2e2e #2e2e2e transparent;border-radius: 50%;transform: rotate(45deg);display: block;position: absolute;bottom: auto;top: -40px;}
+.videoControl .videoEmbed .toggleEdit:not(.down)  i {top: 0px;left: 5px;}
+.videoControl .videoEmbed .toggleEdit:not(.down) i:nth-child(2) { display: none;}
+
+.videoControl .videoEmbed .indicator {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
+.videoControl .videoEmbed .indicator .fullScreenTransparent {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(33, 88, 244, 0.1);}
+.videoControl .videoEmbed .indicator .indicatorImg {position: absolute;border: 1px solid green;}
+.videoControl .videoEmbed .indicator .indicatorImg img {float: left;}
+.videoControl .videoEmbed .indicator .indicatorControl {width:120px;background: #2e2e2e;position: absolute;left: 60px;z-index: 10;padding: 5px;border-radius: 3px;opacity: 0;transition: 300ms}
+.videoControl .videoEmbed .indicator .indicatorControl:hover {opacity: 1}
+.videoControl .videoEmbed .indicator .indicatorControl .flx {float: left;}
+.videoControl .videoEmbed .indicator .indicatorControl label {float: left;display: block;padding: 5px}
+.videoControl .videoEmbed .indicator .indicatorControl input {width: 60px;float: left;display: block;padding: 3px!important;height: auto;}
+.videoControl .videoEmbed .indicator .indicatorControl select {padding: 0;margin-bottom: 10px;border-radius: 0;}
+
+.videoControl input {position: relative;top:0px;z-index: 2;transition: 400ms;width: 620px;float: left;border-radius: 0;border-width: 0 1px;}
+.videoControl input[type=number], .videoControl input[type=button] {width: 30px;margin: 0;float: left;border: none;height: 43px;}
+.videoControl input[type=number] {width: 60px;font-size: 15px;}
+.videoControl input[type=button] {font-family: "Font Awesome 5 Free";padding: 11px 0;}
+.question {width: 100%;float: left;}
+.question span {width:20%;display: block;background: #3e3e3e;color: #fff;padding: 3px;margin: 10px .2%;border-radius: 10px;text-align: center;font-weight: 600;float:left;cursor:pointer;position: relative;z-index: 13;}
+.question span:not(.add) abbr {width: 100%;height: 25px;line-height: 20px;position: absolute;top: 0;left: 0;opacity: 0;transition: 300ms;display: none;}
+.question span:not(.add)  i {width: 20px;height: 20px;line-height: 20px;background: #f43636;position: absolute;top: 0;left: calc(50% - 10px);border-radius: 50%;opacity: 0;transition: 300ms;}
+.question span.active:not(.add):hover  i {top: 5px;opacity: 1;}
+.question span.active:not(.add):hover  abbr {top: 20px;opacity: 1;display: block;}
+.question {position: relative;}
+.question span.add {background: #878787;width: 26px;height: 26px;border: 1px solid #3ab23a;border-radius: 50%;color: white;position: absolute;top: 0;right: 0;}
+.question span.add i {position: absolute;top: -1px;left: 6px;font-size: 22px;font-style: normal;}
+.question span.add:hover {background: #3ab23a;transform: scale(1.3);}
+.question span.active {background: #4a993b;}
